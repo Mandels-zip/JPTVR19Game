@@ -5,24 +5,32 @@
  */
 package jptvr19game;
 
+import java.util.Random;
 import java.util.Scanner;
 
-/**
- *
- * @author pupil
- */
 public class App {
     public void run(){
         System.out.println("Hello");
         System.out.println("Программа задумала число, угадай");
-        int myNumber = 2;
-        Scanner scanner = new Scanner(System.in);
-        int gamerNumber = scanner.nextInt();
-        if(myNumber == gamerNumber){
-            System.out.println("Ты выиграл!");
-        }else{
-            System.out.println("Ты проиграл, было: "
-                   + myNumber);
-        }
+        Random random = new Random();
+        int attempt = 0;
+        int myNumber = random.nextInt(5 - 0 + 1) + 0;
+        do {
+            Scanner scanner = new Scanner(System.in);
+            int gamerNumber = scanner.nextInt();
+            if(myNumber == gamerNumber){
+                System.out.println("Ты выиграл!");
+                break;
+            }else{
+                attempt = attempt +1;
+                if (attempt > 2){  
+                    System.out.println("Ты проиграл, было: "
+                                    + myNumber);
+                    break;
+                }else{
+                    System.out.println("Попробуй еще раз!");
+                }
+            }  
+        }while(true);  
     }
 }
